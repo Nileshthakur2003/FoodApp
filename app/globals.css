@@ -1,26 +1,22 @@
-@import "tailwindcss";
+/* app/globals.css */
+@import 'tailwindcss';
+/* import Konsta UI theme */
+@import 'konsta/react/theme.css';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+/* Register the Konsta UI theme tokens natively for Tailwind v4 */
+@theme {
+  --color-apple-blue: #007aff;
+  --color-apple-gray: #f2f2f7;
+  
+  --spacing-safe-top: env(safe-area-inset-top, 0px);
+  --spacing-safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Force clean iOS typography settings globally */
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-apple-gray);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
