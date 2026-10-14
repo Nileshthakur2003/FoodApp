@@ -137,7 +137,7 @@ export default function Home() {
             }
           />
           <Block className="space-y-4">
-       <MenuList strongIos outlineIos>
+       <MenuList >
         <MenuListItem
           title="Home"
           active={selected === 'home'}
@@ -263,7 +263,7 @@ export default function Home() {
       </div>
 
        {/* Results List */}
-      <List strong insetIos>
+      <List strongIos={true} outlineIos={true}>
         {filteredItems.length > 0 ? (
           filteredItems.map((item) => (
             <ListItem key={item} title={item} />
