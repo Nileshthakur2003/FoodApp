@@ -1,22 +1,91 @@
 /* app/globals.css */
 @import 'tailwindcss';
-/* import Konsta UI theme */
-@import 'konsta/react/theme.css';
 
+@custom-variant dark (&:where(.dark, .dark *));
 
-/* Register the Konsta UI theme tokens natively for Tailwind v4 */
+:root {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Apple San Francisco Typography & System Color Tokens for Tailwind v4 */
 @theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Text", "SF Pro Display", "SF Pro Rounded", system-ui, -apple-system-body, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", system-ui, sans-serif;
+
   --color-apple-blue: #007aff;
+  --color-apple-green: #34c759;
+  --color-apple-orange: #ff9500;
+  --color-apple-red: #ff3b30;
+  --color-apple-purple: #af52de;
+  --color-apple-teal: #30b0c7;
   --color-apple-gray: #f2f2f7;
-  
+  --color-apple-card: #ffffff;
+  --color-apple-subtext: #8e8e93;
+
   --spacing-safe-top: env(safe-area-inset-top, 0px);
   --spacing-safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* Force clean iOS typography settings globally */
+/* Force authentic Apple San Francisco (SF) typography settings */
 html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-apple-gray);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f5f5f7;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Text", "SF Pro Display", "SF Pro Rounded", system-ui, -apple-system-body, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  letter-spacing: -0.015em;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+html.dark, html.dark body, body.dark {
+  background-color: #000000;
+  color: #f5f5f7;
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+  letter-spacing: inherit;
+}
+
+/* Headings use SF Pro Display for Apple-standard optical sizing and tracking */
+h1, h2, h3, h4, h5, h6 {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", system-ui, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+/* Body & UI labels use SF Pro Text */
+p, span, div, a, label, li {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", system-ui, sans-serif;
+}
+
+/* Safe Area Utility */
+.safe-bottom {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+/* Hide scrollbars cleanly */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Smooth iOS active tap feedback */
+.ios-press-bounce {
+  transition: transform 0.12s cubic-bezier(0.2, 0, 0, 1), opacity 0.12s ease;
+  touch-action: manipulation;
+}
+.ios-press-bounce:active {
+  transform: scale(0.96);
+  opacity: 0.85;
 }

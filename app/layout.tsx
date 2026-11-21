@@ -3,12 +3,9 @@ import type { Metadata } from "next";
 import KonstaProvider from "./KonstaProvider";
 import "./globals.css";
 
-/* FIX: Import Konsta UI's exact React theme sheet through the module graph */
-import "konsta/react/theme.css"; 
-
 export const metadata: Metadata = {
-  title: "Food App",
-  description: "A premium mobile-first food application",
+  title: "EatRight - Clean Food & Hygiene Rating",
+  description: "A premium Apple-style mobile-first food application rating hygiene and value in Katihar",
 };
 
 export default function RootLayout({
@@ -17,8 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-pro-display" />
+      </head>
+      <body className="antialiased font-sans">
         <KonstaProvider>
           {children}
         </KonstaProvider>
